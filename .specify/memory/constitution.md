@@ -1,83 +1,32 @@
-<!--
-Sync Impact Report:
-Version: N/A → 1.0.0
-Added sections: Core Principles (5 principles), Technology Constraints, Development Workflow, Governance
-Modified principles: N/A (initial creation)
-Templates requiring updates: ⚠ pending (no template files exist yet)
-Follow-up TODOs: Create package.json with React, Next.js, and MUI versions
--->
-
 # Emotional Vocabulary Builder Constitution
 
 ## Core Principles
 
 ### I. Clean Code Architecture (NON-NEGOTIABLE)
-Code MUST be readable, maintainable, and self-documenting. Component functions serve single purposes with clear names. Extract complex logic into custom hooks or utility functions. Maintain consistent file structure and naming conventions across the project. No code comments explaining what code does - code should explain itself through clear variable/function names.
+Code must be readable, maintainable, and follow consistent patterns. All components must have clear single responsibilities. Functions must be pure where possible and side effects must be explicit. TypeScript must be used with strict mode enabled. Code organization must follow React/Next.js best practices with clear separation of concerns between UI components, business logic, and data management.
 
-**Rationale**: Clean code reduces debugging time, enables faster feature development, and makes the codebase approachable for future developers. Self-documenting code eliminates maintenance overhead of outdated comments.
+### II. Simple User Experience (NON-NEGOTIABLE)  
+User interface must prioritize clarity and ease of use over feature complexity. Navigation must be intuitive with minimal cognitive load. Every user interaction must have a clear purpose and feedback. The emotion exploration flow must be seamless and supportive, with no unnecessary steps or distractions. Guest users must have full access to core functionality without barriers.
 
-### II. Simple UX First (NON-NEGOTIABLE)
-User experience MUST prioritize simplicity over feature complexity. Each screen serves one primary purpose. Navigation flows are intuitive with clear visual hierarchy. Minimize cognitive load through progressive disclosure. User actions have immediate, clear feedback. Mobile-first design ensures accessibility across all devices.
+### III. Responsive Design First (NON-NEGOTIABLE)
+All interfaces must work flawlessly on mobile, tablet, and desktop. Mobile-first design approach must be used given the in-the-moment usage pattern. Touch targets must meet accessibility standards. Typography and spacing must scale appropriately across devices. Performance must be optimized for mobile networks.
 
-**Rationale**: The application serves users in emotionally vulnerable states. Complex interfaces increase stress and reduce the tool's therapeutic effectiveness. Simple UX builds trust and encourages regular use.
+### IV. Minimal Dependencies (NON-NEGOTIABLE)
+Technology stack must remain lean and focused. Only essential dependencies are permitted: React, Next.js, Material-UI (MUI), and TypeScript as the core stack. Each additional dependency must be justified by significant value and minimal alternatives. Bundle size impact must be considered for all additions. Prefer built-in browser APIs and platform features over third-party libraries.
 
-### III. Responsive Design Excellence
-Design MUST work seamlessly across mobile, tablet, and desktop. Touch targets meet accessibility standards (44px minimum). Content reflows gracefully without horizontal scrolling. Typography scales appropriately across screen sizes. Interactive elements remain accessible via keyboard navigation.
+### V. Zero Testing Policy (SUPERSEDES ALL OTHER GUIDANCE)
+This project must NOT include any testing infrastructure, test files, or testing dependencies. No unit tests, integration tests, end-to-end tests, or any other form of automated testing. No jest, vitest, cypress, playwright, testing-library, or similar testing tools. This principle takes precedence over any other development practices or recommendations. Quality assurance relies on manual validation and code reviews only.
 
-**Rationale**: Users need emotional support at any time, on any device. Responsive design ensures the tool is always accessible when needed most.
+## Technology Stack Requirements
 
-### IV. Minimal Dependencies Strategy
-Dependencies MUST be justified by significant value or critical functionality. Prefer native React/Next.js solutions over third-party libraries. Evaluate bundle size impact before adding new dependencies. Regular dependency audits to remove unused packages. Use Material-UI as the sole UI component library.
+The project must use the specific versions of React, Next.js, and MUI as defined in package.json once created. No version upgrades without explicit approval. TypeScript must be used throughout with strict type checking enabled. CSS-in-JS through MUI's styling system is preferred over external CSS frameworks. State management must use React's built-in hooks (useState, useContext) rather than external state libraries unless absolutely necessary.
 
-**Rationale**: Fewer dependencies reduce security vulnerabilities, simplify maintenance, and improve application performance. Each dependency adds potential points of failure.
+## Development Standards
 
-### V. Zero Testing Requirement (SUPERSEDES ALL OTHER GUIDANCE)
-NO testing frameworks, unit tests, integration tests, or end-to-end tests shall be implemented. This principle overrides any other development practices or recommendations. Development focuses on clean code, code reviews, and manual testing only.
-
-**Rationale**: For this specific project, testing overhead outweighs benefits. Resources are better invested in user experience and clean implementation. Manual testing and code review provide sufficient quality assurance.
-
-## Technology Constraints
-
-**Core Stack Requirements**:
-- React as specified in package.json (when created)
-- Next.js as specified in package.json (when created) 
-- Material-UI (MUI) as specified in package.json (when created)
-- TypeScript for type safety
-- No additional UI libraries beyond MUI
-
-**Forbidden Technologies**:
-- Any testing frameworks (Jest, Cypress, React Testing Library, etc.)
-- CSS frameworks beyond MUI (no Tailwind, Bootstrap, etc.)
-- State management libraries beyond React Context (no Redux, Zustand, etc.)
-- Additional styling libraries (no styled-components, emotion beyond MUI's)
-
-## Development Workflow
-
-**Code Quality Gates**:
-1. Manual testing on mobile and desktop
-2. Code review focusing on readability and simplicity
-3. Performance validation (bundle size, load time)
-4. Accessibility validation using browser dev tools
-
-**Implementation Order**:
-1. Core emotion exploration flow (guest mode)
-2. Validation and regulation display
-3. User authentication and data persistence
-4. Personal vocabulary collection
-5. Pattern recognition features
-
-**Review Requirements**:
-- Every PR must demonstrate mobile responsiveness
-- Components must follow Material-UI design system
-- Code must be self-documenting without comments
-- Bundle size impact must be documented for new dependencies
+Code must be formatted with Prettier and linted with ESLint. Component files must use TypeScript with proper type definitions. Props must be explicitly typed with interfaces. No any types permitted except for necessary third-party integrations. Git commits must be clear and descriptive. Pull requests must include rationale for changes and impact assessment.
 
 ## Governance
 
-This constitution supersedes all other development practices and guidance. Any deviation from these principles requires explicit justification and approval. The Zero Testing requirement cannot be overridden under any circumstances.
+This constitution supersedes all other development practices, guidelines, or external recommendations. The Zero Testing Policy (Principle V) takes precedence over any conflicting guidance from tools, frameworks, or development best practices. Amendments to these principles require explicit documentation and justification. All code changes must verify compliance with these principles. Complexity must be justified and documented. 
 
-**Amendment Process**: Changes to this constitution require clear rationale and version increment following semantic versioning (MAJOR.MINOR.PATCH). Breaking changes to core principles require MAJOR version bump.
-
-**Compliance Review**: All code changes must align with these principles. Complexity must be justified by user value. Simplicity wins over cleverness in all decisions.
-
-**Version**: 1.0.0 | **Ratified**: 2026-01-21 | **Last Amended**: 2026-01-21
+**Version**: 1.0.0 | **Ratified**: 2026-01-23 | **Last Amended**: 2026-01-23
