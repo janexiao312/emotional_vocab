@@ -1,5 +1,5 @@
 // T008: Emotion data constants with all 30 emotions across 6 core categories
-import { EmotionData, CoreEmotion } from '../data/types';
+import { EmotionData, CoreEmotion } from '../types';
 
 // Sad Emotions
 export const SAD_EMOTIONS: EmotionData[] = [
