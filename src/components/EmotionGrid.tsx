@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { Grid2, Container, Box } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import { EmotionCard } from './EmotionCard';
 
 interface GridEmotion {
@@ -42,25 +42,33 @@ export function EmotionGrid({
   return (
     <Container maxWidth={maxWidth}>
       <Box sx={{ py: 4 }}>
-        <Grid2 
-          container 
-          spacing={spacing}
+        <Box
           sx={{
             display: 'flex',
+            flexWrap: 'wrap',
+            gap: spacing,
             justifyContent: 'center',
-            alignItems: 'stretch', // Make all cards same height
+            alignItems: 'stretch',
           }}
         >
           {emotions.map((emotion, index) => (
-            <Grid2
+            <Box
               key={emotion.name}
-              xs={12 / (columns.xs || 1)}
-              sm={12 / (columns.sm || 2)}
-              md={12 / (columns.md || 3)}
-              lg={12 / (columns.lg || 3)}
               sx={{
                 display: 'flex',
                 minHeight: cardSize === 'small' ? 120 : cardSize === 'medium' ? 160 : 200,
+                flex: {
+                  xs: `1 1 ${100 / (columns.xs || 1)}%`,
+                  sm: `1 1 ${100 / (columns.sm || 2)}%`,
+                  md: `1 1 ${100 / (columns.md || 3)}%`,
+                  lg: `1 1 ${100 / (columns.lg || 3)}%`,
+                },
+                maxWidth: {
+                  xs: `${100 / (columns.xs || 1)}%`,
+                  sm: `${100 / (columns.sm || 2)}%`,
+                  md: `${100 / (columns.md || 3)}%`,
+                  lg: `${100 / (columns.lg || 3)}%`,
+                },
               }}
             >
               <EmotionCard
@@ -69,9 +77,9 @@ export function EmotionGrid({
                 size={cardSize}
                 className={`emotion-${emotion.name.toLowerCase().replace(/\s+/g, '-')}`}
               />
-            </Grid2>
+            </Box>
           ))}
-        </Grid2>
+        </Box>
       </Box>
     </Container>
   );
