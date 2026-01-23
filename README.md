@@ -1,32 +1,36 @@
-# Emotional Vocabulary Builder
-
-A compassionate tool to help users identify, name, and regulate emotions through guided exploration of emotional vocabulary based on Dr. Gloria Willcox's Feelings Wheel.
-
-## Overview
-
-This application helps users:
-- Explore emotions through a three-layer navigation system
-- Receive validation and regulation techniques for their feelings
-- Build a personal emotional vocabulary collection (with account)
-- Identify emotional patterns over time
-
-## Technology Stack
-
-- React with TypeScript
-- Material-UI (MUI)
-- Mobile-first responsive design
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-*Coming soon - development in progress*
+First, run the development server:
 
-## Features
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- Guest mode for immediate access
-- Account mode for saving and tracking emotions
-- Pattern recognition for emotional insights
-- Accessible and calming user interface
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Based on Dr. Gloria Willcox's Feelings Wheel
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
