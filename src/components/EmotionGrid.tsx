@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { Grid, Container, Box } from '@mui/material';
+import { Grid2, Container, Box } from '@mui/material';
 import { EmotionCard } from './EmotionCard';
 
 interface GridEmotion {
@@ -42,7 +42,7 @@ export function EmotionGrid({
   return (
     <Container maxWidth={maxWidth}>
       <Box sx={{ py: 4 }}>
-        <Grid 
+        <Grid2 
           container 
           spacing={spacing}
           sx={{
@@ -51,38 +51,27 @@ export function EmotionGrid({
             alignItems: 'stretch', // Make all cards same height
           }}
         >
-          {emotions.map((emotion, index) => {
-            // Calculate responsive grid sizes
-            const gridSize = {
-              xs: 12 / (columns.xs || 1),
-              sm: 12 / (columns.sm || 2),
-              md: 12 / (columns.md || 3),
-              lg: 12 / (columns.lg || 3),
-            };
-
-            return (
-              <Grid
-                item
-                key={emotion.name}
-                xs={gridSize.xs}
-                sm={gridSize.sm}
-                md={gridSize.md}
-                lg={gridSize.lg}
-                sx={{
-                  display: 'flex',
-                  minHeight: cardSize === 'small' ? 120 : cardSize === 'medium' ? 160 : 200,
-                }}
-              >
-                <EmotionCard
-                  emotion={emotion}
-                  onClick={emotion.onClick}
-                  size={cardSize}
-                  className={`emotion-${emotion.name.toLowerCase().replace(/\s+/g, '-')}`}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
+          {emotions.map((emotion, index) => (
+            <Grid2
+              key={emotion.name}
+              xs={12 / (columns.xs || 1)}
+              sm={12 / (columns.sm || 2)}
+              md={12 / (columns.md || 3)}
+              lg={12 / (columns.lg || 3)}
+              sx={{
+                display: 'flex',
+                minHeight: cardSize === 'small' ? 120 : cardSize === 'medium' ? 160 : 200,
+              }}
+            >
+              <EmotionCard
+                emotion={emotion}
+                onClick={emotion.onClick}
+                size={cardSize}
+                className={`emotion-${emotion.name.toLowerCase().replace(/\s+/g, '-')}`}
+              />
+            </Grid2>
+          ))}
+        </Grid2>
       </Box>
     </Container>
   );
