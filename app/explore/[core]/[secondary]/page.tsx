@@ -25,10 +25,23 @@ export default async function SecondaryEmotionPage({ params }: SecondaryPageProp
     notFound();
   }
 
-  // Decode the secondary emotion slug
-  const secondaryEmotion = secondary.split('-').map(word => 
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(' ');
+  // Decode the secondary emotion slug - handle special cases
+  let secondaryEmotion: string;
+  if (secondary === 'guilt-shame') {
+    secondaryEmotion = 'Guilt/Shame';
+  } else if (secondary === 'trust-broken') {
+    secondaryEmotion = 'Trust Broken';
+  } else if (secondary === 'unmet-expectations') {
+    secondaryEmotion = 'Unmet Expectations';
+  } else if (secondary === 'lingering-anger') {
+    secondaryEmotion = 'Lingering Anger';
+  } else if (secondary === 'self-doubt') {
+    secondaryEmotion = 'Self-Doubt';
+  } else {
+    secondaryEmotion = secondary.split('-').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  }
 
   return (
     <SecondaryEmotionPageClient 

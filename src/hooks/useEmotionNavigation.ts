@@ -37,7 +37,7 @@ export function useEmotionNavigation() {
     
     setSecondary(secondary);
     const coreSlug = session.selectedCore.toLowerCase();
-    const secondarySlug = secondary.toLowerCase().replace(/\s+/g, '-');
+    const secondarySlug = secondary.toLowerCase().replace(/\s+/g, '-').replace(/\//g, '-');
     router.push(`/explore/${coreSlug}/${secondarySlug}`);
   }, [session.selectedCore, setSecondary, router]);
 
