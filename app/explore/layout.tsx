@@ -2,10 +2,22 @@
 'use client';
 
 import React from 'react';
-import { Box, Container, Breadcrumbs, Link, Button, Typography } from '@mui/material';
-import { ArrowBack, Home } from '@mui/icons-material';
 import { useEmotionNavigation } from '../../src/hooks/useEmotionNavigation';
 import { useRouter } from 'next/navigation';
+
+// Arrow back icon
+const ArrowBackIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg className={className} style={style} fill="currentColor" viewBox="0 0 20 20">
+    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+  </svg>
+);
+
+// Home icon
+const HomeIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg className={className} style={style} fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+  </svg>
+);
 
 interface ExploreLayoutProps {
   children: React.ReactNode;
@@ -20,115 +32,82 @@ export default function ExploreLayout({ children }: ExploreLayoutProps) {
   };
 
   return (
-    <Container maxWidth="lg">
-      <Box sx={{ py: 2 }}>
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="py-4">
         {/* Top Navigation */}
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            mb: 3,
-          }}
-        >
+        <div className="flex justify-between items-center mb-6">
           {/* Back Button */}
-          <Button
-            startIcon={<ArrowBack />}
+          <button
             onClick={canGoBack ? goBack : handleHome}
-            sx={{ 
-              color: 'text.secondary',
-              '&:hover': {
-                backgroundColor: 'action.hover',
-              },
-            }}
+            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors"
+            style={{ color: '#7F8C8D' }}
           >
+            <ArrowBackIcon className="w-4 h-4" />
             {canGoBack ? 'Back' : 'Home'}
-          </Button>
+          </button>
 
           {/* Home Button */}
-          <Button
-            startIcon={<Home />}
+          <button
             onClick={handleHome}
-            sx={{ 
-              color: 'text.secondary',
-              '&:hover': {
-                backgroundColor: 'action.hover',
-              },
-            }}
+            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors"
+            style={{ color: '#7F8C8D' }}
           >
+            <HomeIcon className="w-4 h-4" />
             Start Over
-          </Button>
-        </Box>
+          </button>
+        </div>
 
         {/* Breadcrumb Navigation */}
-        <Box sx={{ mb: 4 }}>
-          <Breadcrumbs
-            separator="›"
-            sx={{
-              fontSize: '0.9rem',
-              color: 'text.secondary',
-              '& .MuiBreadcrumbs-separator': {
-                mx: 1,
-              },
-            }}
-          >
-            <Link
-              component="button"
-              variant="inherit"
+        <div className="mb-8">
+          <nav className="flex items-center space-x-2 text-sm" style={{ color: '#7F8C8D' }}>
+            <button
               onClick={handleHome}
-              sx={{
-                textDecoration: 'none',
-                color: 'text.secondary',
-                '&:hover': {
-                  textDecoration: 'underline',
-                  color: 'primary.main',
-                },
-              }}
+              className="hover:underline"
+              style={{ color: '#7F8C8D' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#2E86AB'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#7F8C8D'}
             >
               Emotions
-            </Link>
+            </button>
             
             {session.selectedCore && (
-              <Typography
-                variant="inherit"
-                sx={{
-                  color: session.currentStep === 'secondary' ? 'primary.main' : 'text.secondary',
-                  fontWeight: session.currentStep === 'secondary' ? 'medium' : 'normal',
-                }}
-              >
-                {session.selectedCore}
-              </Typography>
+              <>
+                <span className="mx-2">›</span>
+                <span style={{
+                  color: session.currentStep === 'secondary' ? '#2E86AB' : '#7F8C8D',
+                  fontWeight: session.currentStep === 'secondary' ? '500' : 'normal'
+                }}>
+                  {session.selectedCore}
+                </span>
+              </>
             )}
             
             {session.selectedSecondary && (
-              <Typography
-                variant="inherit"
-                sx={{
-                  color: session.currentStep === 'tertiary' ? 'primary.main' : 'text.secondary',
-                  fontWeight: session.currentStep === 'tertiary' ? 'medium' : 'normal',
-                }}
-              >
-                {session.selectedSecondary}
-              </Typography>
+              <>
+                <span className="mx-2">›</span>
+                <span style={{
+                  color: session.currentStep === 'tertiary' ? '#2E86AB' : '#7F8C8D',
+                  fontWeight: session.currentStep === 'tertiary' ? '500' : 'normal'
+                }}>
+                  {session.selectedSecondary}
+                </span>
+              </>
             )}
             
             {session.selectedEmotion && (
-              <Typography
-                variant="inherit"
-                sx={{
-                  color: 'primary.main',
-                  fontWeight: 'medium',
-                }}
-              >
-                {session.selectedEmotion.tertiary}
-              </Typography>
+              <>
+                <span className="mx-2">›</span>
+                <span style={{ color: '#2E86AB', fontWeight: '500' }}>
+                  {session.selectedEmotion.tertiary}
+                </span>
+              </>
             )}
-          </Breadcrumbs>
-        </Box>
+          </nav>
+        </div>
 
         {/* Page Content */}
         {children}
-      </Box>
-    </Container>
+      </div>
+    </div>
   );
 }

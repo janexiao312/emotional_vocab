@@ -2,7 +2,6 @@
 'use client';
 
 import React, { Suspense } from 'react';
-import { Box, Typography, Container, CircularProgress } from '@mui/material';
 import { ValidationPanel } from '../../src/components/ValidationPanel';
 import { RegulationPanel } from '../../src/components/RegulationPanel';
 import { JournalPrompt } from '../../src/components/JournalPrompt';
@@ -10,9 +9,16 @@ import { useEmotionData } from '../../src/hooks/useEmotionData';
 import { useSearchParams } from 'next/navigation';
 import { notFound } from 'next/navigation';
 
+// Loading spinner component
+const LoadingSpinner = () => (
+  <div className="flex justify-center items-center h-32">
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+  </div>
+);
+
 export default function ResultPage() {
   return (
-    <Suspense fallback={<CircularProgress />}>
+    <Suspense fallback={<LoadingSpinner />}>
       <ResultPageContent />
     </Suspense>
   );
@@ -34,94 +40,47 @@ function ResultPageContent() {
   }
 
   return (
-    <Container maxWidth="md">
-      <Box sx={{ py: 4 }}>
+    <div className="max-w-4xl mx-auto px-4">
+      <div className="py-8">
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Typography 
-            variant="h3" 
-            component="h1" 
-            gutterBottom
-            sx={{ 
-              fontWeight: 600,
-              color: 'primary.main',
-            }}
-          >
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-semibold mb-4" style={{ color: '#2E86AB' }}>
             {emotion.tertiary}
-          </Typography>
+          </h1>
           
-          <Typography 
-            variant="h6" 
-            component="p"
-            sx={{ 
-              color: 'text.secondary',
-              maxWidth: '600px',
-              mx: 'auto',
-              lineHeight: 1.6,
-              mb: 3,
-            }}
-          >
+          <p className="text-xl max-w-2xl mx-auto leading-relaxed mb-6" style={{ color: '#7F8C8D' }}>
             {emotion.definition}
-          </Typography>
+          </p>
           
-          <Typography 
-            variant="body1" 
-            component="p"
-            sx={{ 
-              color: 'success.main',
-              maxWidth: '500px',
-              mx: 'auto',
-              fontWeight: 500,
-              border: '1px solid',
-              borderColor: 'success.light',
-              borderRadius: 2,
-              p: 2,
-              bgcolor: 'success.50',
-            }}
-          >
-            ✨ Great choice! Now let's help you work with this emotion in healthy ways.
-          </Typography>
-        </Box>
+          <div className="max-w-lg mx-auto bg-green-50 border border-green-300 rounded-lg p-4">
+            <p className="text-green-700 font-medium">
+              ✨ Great choice! Now let's help you work with this emotion in healthy ways.
+            </p>
+          </div>
+        </div>
 
         {/* Content Sections */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          {/* Dualization Section Header */}
-          <Box sx={{ textAlign: 'center', mb: 2 }}>
-            <Typography 
-              variant="h4" 
-              component="h2"
-              gutterBottom
-              sx={{ 
-                fontWeight: 600,
-                color: 'text.primary',
-                mb: 2,
-              }}
-            >
+        <div className="flex flex-col space-y-8">
+          {/* Section Header */}
+          <div className="text-center mb-4">
+            <h2 className="text-3xl font-semibold mb-4" style={{ color: '#2C3E50' }}>
               Your Emotion Toolkit
-            </Typography>
-            <Typography 
-              variant="body1" 
-              sx={{ 
-                color: 'text.secondary',
-                maxWidth: '600px',
-                mx: 'auto',
-                mb: 3,
-              }}
-            >
+            </h2>
+            <p className="max-w-2xl mx-auto mb-6" style={{ color: '#7F8C8D' }}>
               Now that you've identified your specific emotion, here are three powerful ways to work with it:
-            </Typography>
-          </Box>
+            </p>
+          </div>
 
           {/* Validation Panel */}
           <ValidationPanel emotion={emotion} />
 
-          {/* Regulation Techniques - ① Actionable Regulation */}
+          {/* Regulation Techniques */}
           <RegulationPanel emotion={emotion} />
 
-          {/* Journal Prompt - ② Journal Prompt & ③ Start Over */}
+          {/* Journal Prompt */}
           <JournalPrompt emotion={emotion} />
-        </Box>
-      </Box>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }

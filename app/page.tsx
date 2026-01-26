@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import { Typography, Box, Container } from '@mui/material';
 import { EmotionGrid } from '../src/components/EmotionGrid';
 import { useEmotionNavigation } from '../src/hooks/useEmotionNavigation';
 import { CORE_EMOTION_INFO } from '../src/data/emotions';
@@ -20,69 +19,25 @@ export default function Home() {
   }));
 
   return (
-    <Container maxWidth="lg">
-      <Box 
-        sx={{ 
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          py: 4,
-        }}
-      >
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="min-h-screen flex flex-col justify-center py-8">
         {/* Header */}
-        <Box 
-          sx={{ 
-            textAlign: 'center',
-            mb: 4,
-          }}
-        >
-          <Typography 
-            variant="h2" 
-            component="h1" 
-            gutterBottom
-            sx={{ 
-              fontWeight: 600,
-              color: 'text.primary',
-              mb: 2,
-            }}
-          >
+        <div className="text-center mb-8">
+          <h1 className="text-5xl font-semibold mb-4" style={{ color: '#2C3E50' }}>
             How are you feeling?
-          </Typography>
+          </h1>
           
-          <Typography 
-            variant="h6" 
-            component="p"
-            sx={{ 
-              color: 'text.secondary',
-              maxWidth: '600px',
-              mx: 'auto',
-              lineHeight: 1.6,
-              mb: 3,
-            }}
-          >
+          <p className="text-xl max-w-2xl mx-auto leading-relaxed mb-6" style={{ color: '#7F8C8D' }}>
             Let's start by choosing the highest level emotion that best matches how you're feeling right now. 
             We'll then guide you to explore more specific feelings.
-          </Typography>
+          </p>
           
-          <Typography 
-            variant="body1" 
-            component="p"
-            sx={{ 
-              color: 'primary.main',
-              maxWidth: '500px',
-              mx: 'auto',
-              fontWeight: 500,
-              border: '1px solid',
-              borderColor: 'primary.light',
-              borderRadius: 2,
-              p: 2,
-              bgcolor: 'primary.50',
-            }}
-          >
-            💡 Instruction: Pick the core emotion that feels most true to you right now
-          </Typography>
-        </Box>
+          <div className="max-w-lg mx-auto bg-blue-50 border border-blue-300 rounded-lg p-4">
+            <p className="font-medium" style={{ color: '#2E86AB' }}>
+              💡 Instruction: Pick the core emotion that feels most true to you right now
+            </p>
+          </div>
+        </div>
 
         {/* Core Emotions Grid */}
         <EmotionGrid
@@ -97,23 +52,12 @@ export default function Home() {
         />
 
         {/* Footer */}
-        <Box 
-          sx={{ 
-            textAlign: 'center',
-            mt: 4,
-          }}
-        >
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              color: 'text.secondary',
-              fontStyle: 'italic',
-            }}
-          >
+        <div className="text-center mt-8">
+          <p className="italic" style={{ color: '#7F8C8D' }}>
             No account required • Private and secure • Take your time
-          </Typography>
-        </Box>
-      </Box>
-    </Container>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

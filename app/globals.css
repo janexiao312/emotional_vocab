@@ -1,30 +1,72 @@
-/* Global styles for Emotional Vocabulary Builder */
-*, *:before, *:after {
-  box-sizing: border-box;
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: "Roboto", "Helvetica", "Arial", sans-serif;
+  
+  --color-primary-light: #48A3D9;
+  --color-primary: #2E86AB;
+  --color-primary-dark: #1D5F85;
+  
+  --color-secondary-light: #FFB347;
+  --color-secondary: #F18F01;
+  --color-secondary-dark: #C4690D;
+  
+  --color-emotion-joy: #2ECC71;
+  --color-emotion-scared: #F39C12;
+  --color-emotion-mad: #E94B3C;
+  --color-emotion-sad: #4A90E2;
+  
+  --color-background-light: #FAFAFA;
+  --color-background-paper: #FFFFFF;
+  
+  --color-text-primary: #2C3E50;
+  --color-text-secondary: #7F8C8D;
+  
+  --shadow-emotion: 0 8px 20px rgba(0,0,0,0.15);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Base layer customizations */
+@layer base {
+  html {
+    font-family: var(--font-family-sans);
+  }
 
-/* MUI emotion card styles */
-.emotion-card {
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.emotion-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Responsive typography */
-@media (max-width: 600px) {
   body {
-    font-size: 14px;
+    color: var(--color-text-primary);
+    background-color: var(--color-background-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Component layer for reusable styles */
+@layer components {
+  .emotion-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .emotion-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-emotion);
+  }
+
+  .emotion-card:active {
+    transform: translateY(-2px);
+  }
+
+  .emotion-card:focus-within {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
+
+/* Responsive typography utilities */
+@layer utilities {
+  @media (min-width: 640px) {
+    .text-responsive {
+      font-size: 1rem;
+    }
   }
 }

@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import { Typography, Box } from '@mui/material';
 import { EmotionGrid } from '../../../src/components/EmotionGrid';
 import { useEmotionNavigation } from '../../../src/hooks/useEmotionNavigation';
 import { CORE_EMOTION_INFO } from '../../../src/data/emotions';
@@ -35,58 +34,31 @@ function CoreEmotionPageClient({ core }: { core: CoreEmotion }) {
   const secondaryEmotionData = secondaryEmotions.map((secondary) => ({
     name: secondary,
     description: `Explore ${secondary.toLowerCase()} feelings`,
-    color: coreInfo.color, // Use the same color as the core emotion but with opacity
+    color: coreInfo.color, // Use the same color as the core emotion
     onClick: () => selectSecondary(secondary),
   }));
 
   return (
-    <Box sx={{ py: 2 }}>
+    <div className="py-4">
       {/* Header */}
-      <Box sx={{ textAlign: 'center', mb: 4 }}>
-        <Typography 
-          variant="h3" 
-          component="h1" 
-          gutterBottom
-          sx={{ 
-            color: coreInfo.color,
-            fontWeight: 600,
-          }}
+      <div className="text-center mb-8">
+        <h1 
+          className="text-4xl font-semibold mb-4"
+          style={{ color: coreInfo.color }}
         >
           {core} Emotions
-        </Typography>
+        </h1>
         
-        <Typography 
-          variant="h6" 
-          component="p"
-          sx={{ 
-            color: 'text.secondary',
-            maxWidth: '600px',
-            mx: 'auto',
-            mb: 3,
-          }}
-        >
+        <p className="text-xl max-w-2xl mx-auto leading-relaxed mb-6" style={{ color: '#7F8C8D' }}>
           {coreInfo.description}
-        </Typography>
+        </p>
 
-        <Typography 
-          variant="body1" 
-          component="p"
-          sx={{ 
-            color: 'primary.main',
-            maxWidth: '500px',
-            mx: 'auto',
-            fontWeight: 500,
-            border: '1px solid',
-            borderColor: 'primary.light',
-            borderRadius: 2,
-            p: 2,
-            bgcolor: 'primary.50',
-            mb: 2,
-          }}
-        >
-          💭 Now let's get more specific. Which of these {core.toLowerCase()} emotions feels closest to what you're experiencing?
-        </Typography>
-      </Box>
+        <div className="max-w-lg mx-auto bg-blue-50 border border-blue-300 rounded-lg p-4 mb-4">
+          <p className="font-medium" style={{ color: '#2E86AB' }}>
+            💭 Now let's get more specific. Which of these {core.toLowerCase()} emotions feels closest to what you're experiencing?
+          </p>
+        </div>
+      </div>
 
       {/* Secondary Emotions Grid */}
       <EmotionGrid
@@ -99,6 +71,6 @@ function CoreEmotionPageClient({ core }: { core: CoreEmotion }) {
           lg: 3,
         }}
       />
-    </Box>
+    </div>
   );
 }

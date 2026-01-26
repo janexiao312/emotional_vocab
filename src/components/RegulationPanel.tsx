@@ -2,9 +2,21 @@
 'use client';
 
 import React from 'react';
-import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
-import { Build, TipsAndUpdates } from '@mui/icons-material';
 import { EmotionData } from '../data/types';
+
+// Tool/Build icon component
+const BuildIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg className={className} style={style} fill="currentColor" viewBox="0 0 20 20">
+    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clipRule="evenodd" />
+  </svg>
+);
+
+// Lightbulb icon component
+const LightbulbIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg className={className} style={style} fill="currentColor" viewBox="0 0 20 20">
+    <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.477.859h4z" />
+  </svg>
+);
 
 interface RegulationPanelProps {
   emotion: EmotionData;
@@ -12,132 +24,49 @@ interface RegulationPanelProps {
 
 export function RegulationPanel({ emotion }: RegulationPanelProps) {
   return (
-    <Card 
-      sx={{ 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white',
-        '& .MuiTypography-root': {
-          color: 'white',
-        },
-      }}
-    >
-      <CardContent sx={{ p: 4 }}>
+    <div className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg shadow-sm">
+      <div className="p-6">
         {/* Header */}
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            mb: 3,
-          }}
-        >
-          <Build 
-            sx={{ 
-              color: 'white', 
-              mr: 2, 
-              fontSize: '2rem',
-            }} 
-          />
-          <Typography 
-            variant="h5" 
-            component="h2"
-            sx={{ 
-              fontWeight: 600,
-              color: 'white',
-            }}
-          >
+        <div className="flex items-center mb-6">
+          <BuildIcon className="w-8 h-8 text-white mr-3" />
+          <h2 className="text-2xl font-semibold text-white">
             Ways to Navigate This Feeling
-          </Typography>
-        </Box>
+          </h2>
+        </div>
 
         {/* Techniques Grid */}
-        <Box 
-          sx={{ 
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: 3,
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {emotion.generalTechniques.map((technique, index) => (
-            <Box
+            <div
               key={index}
-              sx={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: 2,
-              }}
+              className="flex items-start gap-3"
             >
-              <Chip
-                label={index + 1}
-                size="small"
-                sx={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                  color: 'white',
-                  fontWeight: 'bold',
-                  minWidth: 32,
-                  '& .MuiChip-label': {
-                    color: 'white',
-                  },
-                }}
-              />
+              <span className="flex items-center justify-center w-8 h-6 bg-white/20 text-white font-bold text-sm rounded-full min-w-8">
+                {index + 1}
+              </span>
               
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  lineHeight: 1.6,
-                  flex: 1,
-                }}
-              >
+              <p className="text-white leading-relaxed flex-1">
                 {technique}
-              </Typography>
-            </Box>
+              </p>
+            </div>
           ))}
-        </Box>
+        </div>
 
         {/* Tips Section */}
-        <Box 
-          sx={{ 
-            mt: 4, 
-            pt: 3, 
-            borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-          }}
-        >
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              mb: 2,
-            }}
-          >
-            <TipsAndUpdates 
-              sx={{ 
-                color: 'white', 
-                mr: 1,
-                fontSize: '1.2rem',
-              }} 
-            />
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                fontWeight: 500,
-                color: 'white',
-              }}
-            >
+        <div className="mt-8 pt-6 border-t border-white/20">
+          <div className="flex items-center mb-4">
+            <LightbulbIcon className="w-5 h-5 text-white mr-2" />
+            <p className="font-medium text-white text-sm">
               Remember
-            </Typography>
-          </Box>
+            </p>
+          </div>
           
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              opacity: 0.9,
-              lineHeight: 1.5,
-            }}
-          >
+          <p className="text-white/90 leading-relaxed text-sm">
             These techniques take practice. Try one or two that resonate with you right now. 
             Be patient with yourself as you learn what works best for you.
-          </Typography>
-        </Box>
-      </CardContent>
-    </Card>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

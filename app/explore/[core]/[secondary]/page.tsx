@@ -2,8 +2,6 @@
 'use client';
 
 import React from 'react';
-import { Typography, Box, Card, CardContent, Button } from '@mui/material';
-import { EmotionGrid } from '../../../../src/components/EmotionGrid';
 import { useEmotionNavigation } from '../../../../src/hooks/useEmotionNavigation';
 import { CORE_EMOTION_INFO } from '../../../../src/data/emotions';
 import { CoreEmotion } from '../../../../src/data/types';
@@ -68,126 +66,75 @@ function SecondaryEmotionPageClient({
   }
 
   return (
-    <Box sx={{ py: 2 }}>
+    <div className="py-4">
       {/* Header */}
-      <Box sx={{ textAlign: 'center', mb: 4 }}>
-        <Typography 
-          variant="h3" 
-          component="h1" 
-          gutterBottom
-          sx={{ 
-            color: coreInfo.color,
-            fontWeight: 600,
-          }}
+      <div className="text-center mb-8">
+        <h1 
+          className="text-4xl font-semibold mb-4"
+          style={{ color: coreInfo.color }}
         >
           {secondary}
-        </Typography>
+        </h1>
         
-        <Typography 
-          variant="h6" 
-          component="p"
-          sx={{ 
-            color: 'text.secondary',
-            maxWidth: '600px',
-            mx: 'auto',
-            mb: 3,
-          }}
-        >
+        <p className="text-xl max-w-2xl mx-auto mb-6" style={{ color: '#7F8C8D' }}>
           Let's get even more specific about your {secondary.toLowerCase()} feelings
-        </Typography>
+        </p>
 
-        <Typography 
-          variant="body1" 
-          component="p"
-          sx={{ 
-            color: 'primary.main',
-            maxWidth: '600px',
-            mx: 'auto',
-            fontWeight: 500,
-            border: '1px solid',
-            borderColor: 'primary.light',
-            borderRadius: 2,
-            p: 2,
-            bgcolor: 'primary.50',
-            mb: 2,
-          }}
-        >
-          🎯 Final step: Choose the specific emotion that resonates most with you. Each choice includes definitions and examples to help you decide.
-        </Typography>
-      </Box>
+        <div className="max-w-2xl mx-auto bg-blue-50 border border-blue-300 rounded-lg p-4 mb-4">
+          <p className="font-medium" style={{ color: '#2E86AB' }}>
+            🎯 Final step: Choose the specific emotion that resonates most with you. Each choice includes definitions and examples to help you decide.
+          </p>
+        </div>
+      </div>
 
       {/* Tertiary Emotions */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+      <div className="flex flex-col space-y-6">
         {tertiaryEmotions.map((emotion) => (
-          <Card 
+          <div 
             key={emotion.id}
-            sx={{ 
-              maxWidth: 800, 
-              mx: 'auto',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease-in-out',
-              '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: 3,
-              },
-            }}
+            className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow-sm cursor-pointer transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
             onClick={() => selectEmotion(emotion.id)}
           >
-            <CardContent sx={{ p: 3 }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                <Typography 
-                  variant="h5" 
-                  component="h2"
-                  sx={{ 
-                    color: coreInfo.color,
-                    fontWeight: 600,
-                  }}
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <h2 
+                  className="text-2xl font-semibold"
+                  style={{ color: coreInfo.color }}
                 >
                   {emotion.tertiary}
-                </Typography>
+                </h2>
                 
-                <Button
-                  variant="outlined"
-                  size="small"
-                  sx={{
+                <button
+                  className="px-4 py-2 border rounded-lg text-sm font-medium transition-colors"
+                  style={{ 
                     borderColor: coreInfo.color,
                     color: coreInfo.color,
-                    '&:hover': {
-                      backgroundColor: coreInfo.color,
-                      color: 'white',
-                    },
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = coreInfo.color;
+                    e.currentTarget.style.color = 'white';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.color = coreInfo.color;
                   }}
                 >
                   This is it
-                </Button>
-              </Box>
+                </button>
+              </div>
               
-              <Typography 
-                variant="body1" 
-                paragraph
-                sx={{ 
-                  color: 'text.primary',
-                  lineHeight: 1.6,
-                  mb: 2,
-                }}
-              >
+              <p className="leading-relaxed mb-4" style={{ color: '#2C3E50' }}>
                 {emotion.definition}
-              </Typography>
+              </p>
               
-              <Typography 
-                variant="body2" 
-                sx={{ 
-                  color: 'text.secondary',
-                  fontStyle: 'italic',
-                }}
-              >
+              <p className="text-sm italic" style={{ color: '#7F8C8D' }}>
                 Examples: {emotion.examples.slice(0, 2).join(', ')}
                 {emotion.examples.length > 2 && '...'}
-              </Typography>
-            </CardContent>
-          </Card>
+              </p>
+            </div>
+          </div>
         ))}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }

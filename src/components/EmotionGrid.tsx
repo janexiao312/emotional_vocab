@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import { Container, Box } from '@mui/material';
 import { EmotionCard } from './EmotionCard';
 
 interface GridEmotion {
@@ -34,53 +33,51 @@ export function EmotionGrid({
 }: EmotionGridProps) {
   // Determine grid spacing based on card size
   const spacing = {
-    small: 2,
-    medium: 3,
-    large: 4,
+    small: 'gap-2',
+    medium: 'gap-3',
+    large: 'gap-4',
+  }[cardSize];
+
+  const containerMaxWidth = {
+    sm: 'max-w-2xl',
+    md: 'max-w-4xl', 
+    lg: 'max-w-6xl',
+    xl: 'max-w-7xl',
+  }[maxWidth];
+
+  const cardHeight = {
+    small: 'min-h-[120px]',
+    medium: 'min-h-[160px]',
+    large: 'min-h-[200px]',
   }[cardSize];
 
   return (
-    <Container maxWidth={maxWidth}>
-      <Box sx={{ py: 4 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: spacing,
-            justifyContent: 'center',
-            alignItems: 'stretch',
-          }}
+    <div className={`mx-auto ${containerMaxWidth}`}>
+      <div className="py-8">
+        <div
+          className={`flex flex-wrap ${spacing} justify-center items-stretch`}
         >
           {emotions.map((emotion, index) => (
-            <Box
+            <div
               key={emotion.name}
-              sx={{
-                display: 'flex',
-                minHeight: cardSize === 'small' ? 120 : cardSize === 'medium' ? 160 : 200,
-                flex: {
-                  xs: `1 1 ${100 / (columns.xs || 1)}%`,
-                  sm: `1 1 ${100 / (columns.sm || 2)}%`,
-                  md: `1 1 ${100 / (columns.md || 3)}%`,
-                  lg: `1 1 ${100 / (columns.lg || 3)}%`,
-                },
-                maxWidth: {
-                  xs: `${100 / (columns.xs || 1)}%`,
-                  sm: `${100 / (columns.sm || 2)}%`,
-                  md: `${100 / (columns.md || 3)}%`,
-                  lg: `${100 / (columns.lg || 3)}%`,
-                },
-              }}
+              className={`
+                flex ${cardHeight}
+                w-full
+                sm:w-1/2 sm:flex-1 sm:basis-1/2
+                md:w-1/3 md:flex-1 md:basis-1/3
+                lg:w-1/3 lg:flex-1 lg:basis-1/3
+              `}
             >
               <EmotionCard
                 emotion={emotion}
                 onClick={emotion.onClick}
                 size={cardSize}
-                className={`emotion-${emotion.name.toLowerCase().replace(/\s+/g, '-')}`}
+                className={`emotion-${emotion.name.toLowerCase().replace(/\s+/g, '-')} w-full`}
               />
-            </Box>
+            </div>
           ))}
-        </Box>
-      </Box>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }

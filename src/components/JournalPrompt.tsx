@@ -2,23 +2,34 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  Card, 
-  CardContent, 
-  Typography, 
-  Box, 
-  TextField, 
-  Button,
-  Collapse,
-  IconButton,
-} from '@mui/material';
-import { 
-  MenuBook, 
-  ExpandMore, 
-  ExpandLess, 
-  Lightbulb,
-} from '@mui/icons-material';
 import { EmotionData } from '../data/types';
+
+// Book icon component
+const BookIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg className={className} style={style} fill="currentColor" viewBox="0 0 20 20">
+    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+  </svg>
+);
+
+// Lightbulb icon component
+const LightbulbIcon = ({ className, style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg className={className} style={style} fill="currentColor" viewBox="0 0 20 20">
+    <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.477.859h4z" />
+  </svg>
+);
+
+// Expand/Collapse icons
+const ExpandMoreIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 20 20">
+    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+  </svg>
+);
+
+const ExpandLessIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 20 20">
+    <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+  </svg>
+);
 
 interface JournalPromptProps {
   emotion: EmotionData;
@@ -38,220 +49,114 @@ export function JournalPrompt({ emotion }: JournalPromptProps) {
   };
 
   return (
-    <Card 
-      sx={{ 
-        background: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-        border: '1px solid',
-        borderColor: 'divider',
-      }}
-    >
-      <CardContent sx={{ p: 4 }}>
+    <div className="bg-gradient-to-br from-orange-100 to-orange-200 border border-gray-200 rounded-lg shadow-sm">
+      <div className="p-6">
         {/* Header */}
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'space-between',
-            mb: 3,
-          }}
-        >
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <MenuBook 
-              sx={{ 
-                color: 'warning.main', 
-                mr: 2, 
-                fontSize: '2rem',
-              }} 
-            />
-            <Typography 
-              variant="h5" 
-              component="h2"
-              sx={{ 
-                fontWeight: 600,
-                color: 'text.primary',
-              }}
-            >
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center">
+            <BookIcon className="w-8 h-8 mr-3" style={{ color: '#F18F01' }} />
+            <h2 className="text-2xl font-semibold" style={{ color: '#2C3E50' }}>
               Reflect & Explore
-            </Typography>
-          </Box>
+            </h2>
+          </div>
 
-          <IconButton
+          <button
             onClick={handleToggleExpanded}
-            sx={{
-              color: 'text.secondary',
-              '&:hover': {
-                backgroundColor: 'rgba(0,0,0,0.04)',
-              },
-            }}
+            className="p-2 hover:bg-black/5 rounded-full transition-colors"
+            style={{ color: '#7F8C8D' }}
           >
-            {isExpanded ? <ExpandLess /> : <ExpandMore />}
-          </IconButton>
-        </Box>
+            {isExpanded ? (
+              <ExpandLessIcon className="w-6 h-6" />
+            ) : (
+              <ExpandMoreIcon className="w-6 h-6" />
+            )}
+          </button>
+        </div>
 
         {/* Prompt Question */}
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            alignItems: 'flex-start', 
-            mb: 3,
-            gap: 2,
-          }}
-        >
-          <Lightbulb 
-            sx={{ 
-              color: 'warning.main', 
-              fontSize: '1.5rem',
-              mt: 0.5,
-            }} 
-          />
+        <div className="flex items-start gap-3 mb-6">
+          <LightbulbIcon className="w-6 h-6 mt-1" style={{ color: '#F18F01' }} />
           
-          <Box sx={{ flex: 1 }}>
-            <Typography 
-              variant="h6" 
-              component="h3"
-              sx={{ 
-                fontWeight: 500,
-                color: 'text.primary',
-                mb: 1,
-              }}
-            >
+          <div className="flex-1">
+            <h3 className="text-xl font-medium mb-2" style={{ color: '#2C3E50' }}>
               Journal Prompt
-            </Typography>
+            </h3>
             
-            <Typography 
-              variant="body1" 
-              sx={{ 
-                color: 'text.primary',
-                lineHeight: 1.6,
-                fontStyle: 'italic',
-                fontSize: '1.1rem',
-              }}
-            >
+            <p className="leading-relaxed italic text-lg" style={{ color: '#2C3E50' }}>
               {emotion.journalPrompt}
-            </Typography>
-          </Box>
-        </Box>
+            </p>
+          </div>
+        </div>
 
         {/* Expandable Journal Area */}
-        <Collapse in={isExpanded}>
-          <Box sx={{ mt: 3 }}>
-            <TextField
-              fullWidth
-              multiline
-              rows={6}
+        <div className={`transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+          <div className="mt-6">
+            <textarea
+              className="w-full h-40 p-4 bg-white/70 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
               placeholder="Take a moment to reflect on this question. Write down whatever comes to mind - there's no right or wrong answer..."
               value={journalText}
               onChange={(e) => setJournalText(e.target.value)}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                },
-                mb: 3,
-              }}
             />
 
-            <Box sx={{ textAlign: 'center' }}>
-              <Typography 
-                variant="body2" 
-                sx={{ 
-                  color: 'text.secondary',
-                  mb: 2,
-                  fontStyle: 'italic',
-                }}
-              >
+            <div className="text-center mt-4">
+              <p className="text-sm italic mb-4" style={{ color: '#7F8C8D' }}>
                 Your reflections are private and not saved anywhere.
                 This space is just for you.
-              </Typography>
-            </Box>
-          </Box>
-        </Collapse>
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Action Buttons */}
-        <Box 
-          sx={{ 
-            mt: 4, 
-            pt: 3, 
-            borderTop: '1px solid rgba(0,0,0,0.1)',
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            gap: 2,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Button
-            variant="contained"
-            onClick={handleStartOver}
-            sx={{
-              backgroundColor: 'primary.main',
-              color: 'white',
-              '&:hover': {
-                backgroundColor: 'primary.dark',
-              },
-              minWidth: 160,
-            }}
-          >
-            Explore Another Emotion
-          </Button>
-
-          {!isExpanded && (
-            <Button
-              variant="outlined"
-              onClick={handleToggleExpanded}
-              sx={{
-                borderColor: 'warning.main',
-                color: 'warning.main',
-                '&:hover': {
-                  backgroundColor: 'warning.main',
-                  color: 'white',
-                },
-                minWidth: 160,
-              }}
+        <div className="mt-8 pt-6 border-t border-black/10 text-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={handleStartOver}
+              className="text-white hover:opacity-90 px-8 py-2 rounded-lg font-medium min-w-40 transition-colors"
+              style={{ backgroundColor: '#2E86AB' }}
             >
-              Open Journal Space
-            </Button>
-          )}
-        </Box>
+              Explore Another Emotion
+            </button>
+
+            {!isExpanded && (
+              <button
+                onClick={handleToggleExpanded}
+                className="border text-white hover:bg-opacity-90 px-8 py-2 rounded-lg font-medium min-w-40 transition-colors"
+                style={{ 
+                  borderColor: '#F18F01',
+                  color: '#F18F01',
+                  backgroundColor: 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#F18F01';
+                  e.currentTarget.style.color = 'white';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#F18F01';
+                }}
+              >
+                Open Journal Space
+              </button>
+            )}
+          </div>
+        </div>
 
         {/* Encouraging Message & Start Over */}
-        <Box sx={{ mt: 4, textAlign: 'center' }}>
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              color: 'text.secondary',
-              lineHeight: 1.5,
-              mb: 3,
-            }}
-          >
+        <div className="mt-8 text-center">
+          <p className="leading-relaxed text-sm mb-6" style={{ color: '#7F8C8D' }}>
             Taking time to understand your emotions is an act of self-care and wisdom. 
             You're building valuable emotional intelligence.
-          </Typography>
+          </p>
           
-          <Button
-            variant="contained"
-            size="large"
+          <button
             onClick={handleStartOver}
-            sx={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white',
-              fontWeight: 600,
-              py: 1.5,
-              px: 4,
-              borderRadius: 3,
-              textTransform: 'none',
-              fontSize: '1.1rem',
-              '&:hover': {
-                background: 'linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)',
-                transform: 'translateY(-1px)',
-              },
-              transition: 'all 0.2s ease-in-out',
-            }}
+            className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-xl text-lg transition-all transform hover:-translate-y-0.5 shadow-lg"
           >
             🔄 Start Over - Explore Another Emotion
-          </Button>
-        </Box>
-      </CardContent>
-    </Card>
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
