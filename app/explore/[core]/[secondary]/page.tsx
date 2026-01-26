@@ -77,21 +77,29 @@ function SecondaryEmotionPageClient({
             color: 'text.secondary',
             maxWidth: '600px',
             mx: 'auto',
-            mb: 2,
+            mb: 3,
           }}
         >
-          Types of {secondary.toLowerCase()} within {core.toLowerCase()} emotions
+          Let's get even more specific about your {secondary.toLowerCase()} feelings
         </Typography>
 
         <Typography 
           variant="body1" 
+          component="p"
           sx={{ 
-            color: 'text.secondary',
-            maxWidth: '500px',
+            color: 'primary.main',
+            maxWidth: '600px',
             mx: 'auto',
+            fontWeight: 500,
+            border: '1px solid',
+            borderColor: 'primary.light',
+            borderRadius: 2,
+            p: 2,
+            bgcolor: 'primary.50',
+            mb: 2,
           }}
         >
-          Choose the specific emotion that best matches what you're feeling:
+          🎯 Final step: Choose the specific emotion that resonates most with you. Each choice includes definitions and examples to help you decide.
         </Typography>
       </Box>
 

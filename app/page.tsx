@@ -58,10 +58,29 @@ export default function Home() {
               maxWidth: '600px',
               mx: 'auto',
               lineHeight: 1.6,
+              mb: 3,
             }}
           >
-            Choose the core emotion that best matches what you're experiencing right now. 
-            We'll help you explore and understand your feelings.
+            Let's start by choosing the highest level emotion that best matches how you're feeling right now. 
+            We'll then guide you to explore more specific feelings.
+          </Typography>
+          
+          <Typography 
+            variant="body1" 
+            component="p"
+            sx={{ 
+              color: 'primary.main',
+              maxWidth: '500px',
+              mx: 'auto',
+              fontWeight: 500,
+              border: '1px solid',
+              borderColor: 'primary.light',
+              borderRadius: 2,
+              p: 2,
+              bgcolor: 'primary.50',
+            }}
+          >
+            💡 Instruction: Pick the core emotion that feels most true to you right now
           </Typography>
         </Box>
 

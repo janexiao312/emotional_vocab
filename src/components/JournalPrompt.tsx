@@ -214,18 +214,42 @@ export function JournalPrompt({ emotion }: JournalPromptProps) {
           )}
         </Box>
 
-        {/* Encouraging Message */}
-        <Box sx={{ mt: 3, textAlign: 'center' }}>
+        {/* Encouraging Message & Start Over */}
+        <Box sx={{ mt: 4, textAlign: 'center' }}>
           <Typography 
             variant="body2" 
             sx={{ 
               color: 'text.secondary',
               lineHeight: 1.5,
+              mb: 3,
             }}
           >
             Taking time to understand your emotions is an act of self-care and wisdom. 
             You're building valuable emotional intelligence.
           </Typography>
+          
+          <Button
+            variant="contained"
+            size="large"
+            onClick={handleStartOver}
+            sx={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              fontWeight: 600,
+              py: 1.5,
+              px: 4,
+              borderRadius: 3,
+              textTransform: 'none',
+              fontSize: '1.1rem',
+              '&:hover': {
+                background: 'linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)',
+                transform: 'translateY(-1px)',
+              },
+              transition: 'all 0.2s ease-in-out',
+            }}
+          >
+            🔄 Start Over - Explore Another Emotion
+          </Button>
         </Box>
       </CardContent>
     </Card>

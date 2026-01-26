@@ -62,7 +62,7 @@ function CoreEmotionPageClient({ core }: { core: CoreEmotion }) {
             color: 'text.secondary',
             maxWidth: '600px',
             mx: 'auto',
-            mb: 2,
+            mb: 3,
           }}
         >
           {coreInfo.description}
@@ -70,13 +70,21 @@ function CoreEmotionPageClient({ core }: { core: CoreEmotion }) {
 
         <Typography 
           variant="body1" 
+          component="p"
           sx={{ 
-            color: 'text.secondary',
+            color: 'primary.main',
             maxWidth: '500px',
             mx: 'auto',
+            fontWeight: 500,
+            border: '1px solid',
+            borderColor: 'primary.light',
+            borderRadius: 2,
+            p: 2,
+            bgcolor: 'primary.50',
+            mb: 2,
           }}
         >
-          Select the category that best describes your {core.toLowerCase()} feeling:
+          💭 Now let's get more specific. Which of these {core.toLowerCase()} emotions feels closest to what you're experiencing?
         </Typography>
       </Box>
 
