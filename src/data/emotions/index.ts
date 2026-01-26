@@ -25,6 +25,27 @@ export const SAD_EMOTIONS: EmotionData[] = [
     journalPrompt: 'What kind of connection am I craving right now? Is it depth, frequency, shared interests, or something else?'
   },
   {
+    id: 'sad-abandoned',
+    core: 'Sad',
+    secondary: 'Isolated',
+    tertiary: 'Abandoned',
+    definition: 'Feeling left behind or deserted by people who were important to you.',
+    examples: [
+      'Friends making plans without including you',
+      'Feeling like your family has moved on without you',
+      'A partner ending the relationship suddenly',
+      'Being excluded from important conversations or decisions'
+    ],
+    validation: 'Feeling abandoned reflects your deep need for connection and belonging. This need is fundamental to being human.',
+    generalTechniques: [
+      'Acknowledge the pain of feeling left out or forgotten',
+      'Reach out to someone who has shown consistency in your life',
+      'Practice self-companionship through kind self-talk',
+      'Consider if this is about the situation or past wounds being triggered'
+    ],
+    journalPrompt: 'When have I felt most supported and included? What made those relationships feel secure?'
+  },
+  {
     id: 'sad-disappointed',
     core: 'Sad',
     secondary: 'Unmet Expectations',
@@ -44,6 +65,27 @@ export const SAD_EMOTIONS: EmotionData[] = [
       'Look for lessons or alternative opportunities that might emerge'
     ],
     journalPrompt: 'What did this disappointment teach me about what I truly value or want in my life?'
+  },
+  {
+    id: 'sad-dejected',
+    core: 'Sad',
+    secondary: 'Unmet Expectations',
+    tertiary: 'Dejected',
+    definition: 'Feeling low and dispirited when things repeatedly don\'t work out as hoped.',
+    examples: [
+      'Job applications being rejected repeatedly',
+      'Plans consistently falling through due to circumstances',
+      'Feeling like nothing you try works out',
+      'Watching others succeed where you\'ve struggled'
+    ],
+    validation: 'Dejection shows you haven\'t given up hope entirely. That persistent hope, even when dimmed, is a strength.',
+    generalTechniques: [
+      'Acknowledge the pattern of disappointment without judging yourself',
+      'Look for very small wins to rebuild momentum',
+      'Adjust expectations to be more realistic while maintaining hope',
+      'Consider if you need to change approach rather than give up on goals'
+    ],
+    journalPrompt: 'What would a small but meaningful success look like for me right now?'
   },
   {
     id: 'sad-grief',
@@ -67,6 +109,27 @@ export const SAD_EMOTIONS: EmotionData[] = [
     journalPrompt: 'How can I honor what I\'ve lost while slowly opening to what might still be possible?'
   },
   {
+    id: 'sad-heartbroken',
+    core: 'Sad',
+    secondary: 'Loss',
+    tertiary: 'Heartbroken',
+    definition: 'Deep emotional pain from losing someone or something that meant everything to you.',
+    examples: [
+      'The end of a significant romantic relationship',
+      'Death of a beloved pet or family member',
+      'Loss of a friendship that defined part of your identity',
+      'Having to give up on a dream you\'ve held for years'
+    ],
+    validation: 'Heartbreak is love with nowhere to go. The depth of your pain reflects the depth of your caring.',
+    generalTechniques: [
+      'Allow yourself to grieve without timeline pressure',
+      'Create rituals to honor what you\'ve lost',
+      'Seek support from others who understand loss',
+      'Be patient with the non-linear nature of healing'
+    ],
+    journalPrompt: 'What did this relationship or connection give me that I\'m now grieving the loss of?'
+  },
+  {
     id: 'sad-hopeless',
     core: 'Sad',
     secondary: 'Despair',
@@ -86,6 +149,27 @@ export const SAD_EMOTIONS: EmotionData[] = [
       'Practice grounding techniques to stay present rather than projecting into the future'
     ],
     journalPrompt: 'If I could only take one small step today, what would feel most manageable or meaningful?'
+  },
+  {
+    id: 'sad-ashamed',
+    core: 'Sad',
+    secondary: 'Guilt/Shame',
+    tertiary: 'Ashamed',
+    definition: 'Feeling fundamentally flawed or wrong as a person, rather than about specific actions.',
+    examples: [
+      'Believing you\'re a burden to others',
+      'Feeling like you don\'t deserve good things',
+      'Hiding parts of yourself because you think they\'re unacceptable',
+      'Comparing yourself negatively to others constantly'
+    ],
+    validation: 'Shame often comes from old messages about your worth. You are inherently valuable regardless of your struggles or mistakes.',
+    generalTechniques: [
+      'Practice distinguishing shame (I am bad) from guilt (I did something bad)',
+      'Challenge shame with self-compassion and factual thinking',
+      'Share your shame story with a trusted person to break its power',
+      'Remind yourself of your inherent worth as a human being'
+    ],
+    journalPrompt: 'If my best friend felt this way about themselves, what would I tell them about their worth and value?'
   },
   {
     id: 'sad-regretful',
@@ -134,6 +218,27 @@ export const MAD_EMOTIONS: EmotionData[] = [
     journalPrompt: 'What is this frustration telling me about what matters to me right now?'
   },
   {
+    id: 'mad-blocked',
+    core: 'Mad',
+    secondary: 'Blocked',
+    tertiary: 'Blocked',
+    definition: 'Feeling prevented from moving forward or achieving your goals by external barriers.',
+    examples: [
+      'Bureaucratic red tape preventing you from getting needed services',
+      'Limited resources blocking you from pursuing opportunities',
+      'Other people\'s decisions impacting your ability to progress',
+      'Systemic barriers based on identity or circumstances'
+    ],
+    validation: 'Feeling blocked is legitimate when real barriers exist. Your frustration shows you have drive and ambition.',
+    generalTechniques: [
+      'Identify which barriers are truly external vs which you might have some influence over',
+      'Look for alternative paths or creative solutions',
+      'Build alliances with others facing similar obstacles',
+      'Channel anger into strategic action where possible'
+    ],
+    journalPrompt: 'What support or resources might help me navigate around this obstacle?'
+  },
+  {
     id: 'mad-betrayed',
     core: 'Mad',
     secondary: 'Trust Broken',
@@ -153,6 +258,27 @@ export const MAD_EMOTIONS: EmotionData[] = [
       'Take time before making decisions about the relationship'
     ],
     journalPrompt: 'What does this betrayal teach me about my values and what I need in relationships?'
+  },
+  {
+    id: 'mad-deceived',
+    core: 'Mad',
+    secondary: 'Trust Broken',
+    tertiary: 'Deceived',
+    definition: 'Feeling misled or lied to by someone you trusted, realizing things weren\'t as they seemed.',
+    examples: [
+      'Discovering someone has been lying about important matters',
+      'Finding out a person presented themselves falsely',
+      'Learning that someone manipulated facts to get what they wanted',
+      'Realizing you were kept in the dark about something affecting you'
+    ],
+    validation: 'Being deceived hurts because you extended trust in good faith. Your capacity for trust shows openness and hope.',
+    generalTechniques: [
+      'Allow yourself to feel angry about the deception',
+      'Separate the liar from your ability to trust worthy people',
+      'Learn what red flags you might watch for in the future',
+      'Don\'t let one person\'s dishonesty close you off from all relationships'
+    ],
+    journalPrompt: 'How can I honor my need for honesty while still remaining open to trustworthy people?'
   },
   {
     id: 'mad-indignant',
@@ -241,6 +367,27 @@ export const SCARED_EMOTIONS: EmotionData[] = [
       'Challenge catastrophic thinking with more balanced perspectives'
     ],
     journalPrompt: 'What specific worry is beneath this anxiety, and what small step could I take to address it?'
+  },
+  {
+    id: 'scared-panicked',
+    core: 'Scared',
+    secondary: 'Worry',
+    tertiary: 'Panicked',
+    definition: 'Sudden, intense fear that feels urgent and overwhelming, often with physical symptoms.',
+    examples: [
+      'Having a panic attack in a crowded place',
+      'Sudden fear that something terrible will happen to someone you love',
+      'Feeling overwhelmed by racing thoughts about worst-case scenarios',
+      'Physical symptoms like rapid heartbeat or trouble breathing from fear'
+    ],
+    validation: 'Panic is your system going into high alert to protect you. Even when overwhelming, it shows your body\'s dedication to your survival.',
+    generalTechniques: [
+      'Use grounding techniques: breathe slowly and name things around you',
+      'Remind yourself that panic attacks are temporary and not dangerous',
+      'Practice the 4-7-8 breathing technique: inhale for 4, hold for 7, exhale for 8',
+      'Seek professional help if panic episodes interfere with your life'
+    ],
+    journalPrompt: 'What can I tell myself in moments of panic to feel safer and more grounded?'
   },
   {
     id: 'scared-terrified',
