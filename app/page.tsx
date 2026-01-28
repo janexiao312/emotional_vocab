@@ -28,8 +28,8 @@ export default function Home() {
           </h1>
           
           <p className="text-xl max-w-2xl mx-auto leading-relaxed mb-6" style={{ color: '#7F8C8D' }}>
-            Let's start by choosing the highest level emotion that best matches how you're feeling right now. 
-            We'll then guide you to explore more specific feelings.
+            Let&apos;s start by choosing the highest level emotion that best matches how you&apos;re feeling right now. 
+            We&apos;ll then guide you to explore more specific feelings.
           </p>
           
           <div className="max-w-lg mx-auto bg-blue-50 border border-blue-300 rounded-lg p-4">

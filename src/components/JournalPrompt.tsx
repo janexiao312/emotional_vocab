@@ -146,7 +146,7 @@ export function JournalPrompt({ emotion }: JournalPromptProps) {
         <div className="mt-8 text-center">
           <p className="leading-relaxed text-sm mb-6" style={{ color: '#7F8C8D' }}>
             Taking time to understand your emotions is an act of self-care and wisdom. 
-            You're building valuable emotional intelligence.
+            You&apos;re building valuable emotional intelligence.
           </p>
           
           <button

@@ -54,7 +54,7 @@ function ResultPageContent() {
           
           <div className="max-w-lg mx-auto bg-green-50 border border-green-300 rounded-lg p-4">
             <p className="text-green-700 font-medium">
-              ✨ Great choice! Now let's help you work with this emotion in healthy ways.
+              ✨ Great choice! Now let&apos;s help you work with this emotion in healthy ways.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ function ResultPageContent() {
               Your Emotion Toolkit
             </h2>
             <p className="max-w-2xl mx-auto mb-6" style={{ color: '#7F8C8D' }}>
-              Now that you've identified your specific emotion, here are three powerful ways to work with it:
+              Now that you&apos;ve identified your specific emotion, here are three powerful ways to work with it:
             </p>
           </div>
 

@@ -55,7 +55,7 @@ function CoreEmotionPageClient({ core }: { core: CoreEmotion }) {
 
         <div className="max-w-lg mx-auto bg-blue-50 border border-blue-300 rounded-lg p-4 mb-4">
           <p className="font-medium" style={{ color: '#2E86AB' }}>
-            💭 Now let's get more specific. Which of these {core.toLowerCase()} emotions feels closest to what you're experiencing?
+            💭 Now let&apos;s get more specific. Which of these {core.toLowerCase()} emotions feels closest to what you&apos;re experiencing?
           </p>
         </div>
       </div>

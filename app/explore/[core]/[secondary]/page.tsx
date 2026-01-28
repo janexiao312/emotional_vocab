@@ -77,7 +77,7 @@ function SecondaryEmotionPageClient({
         </h1>
         
         <p className="text-xl max-w-2xl mx-auto mb-6" style={{ color: '#7F8C8D' }}>
-          Let's get even more specific about your {secondary.toLowerCase()} feelings
+          Let&apos;s get even more specific about your {secondary.toLowerCase()} feelings
         </p>
 
         <div className="max-w-2xl mx-auto bg-blue-50 border border-blue-300 rounded-lg p-4 mb-4">
