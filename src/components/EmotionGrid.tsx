@@ -21,6 +21,7 @@ interface EmotionGridProps {
     sm?: number; 
     md?: number;
     lg?: number;
+    xl?: number;
   };
 }
 
@@ -31,13 +32,6 @@ export function EmotionGrid({
   cardSize = 'medium',
   columns = { xs: 1, sm: 2, md: 3, lg: 3 }
 }: EmotionGridProps) {
-  // Determine grid spacing based on card size
-  const spacing = {
-    small: 'gap-2',
-    medium: 'gap-3',
-    large: 'gap-4',
-  }[cardSize];
-
   const containerMaxWidth = {
     sm: 'max-w-2xl',
     md: 'max-w-4xl', 
@@ -45,37 +39,30 @@ export function EmotionGrid({
     xl: 'max-w-7xl',
   }[maxWidth];
 
-  const cardHeight = {
-    small: 'min-h-[120px]',
-    medium: 'min-h-[160px]',
-    large: 'min-h-[200px]',
-  }[cardSize];
-
   return (
     <div className={`mx-auto ${containerMaxWidth}`}>
       <div className="py-8">
-        <div
-          className={`flex flex-wrap ${spacing} justify-center items-stretch`}
-        >
-          {emotions.map((emotion, index) => (
-            <div
-              key={emotion.name}
-              className={`
-                flex ${cardHeight}
-                w-full
-                sm:w-1/2 sm:flex-1 sm:basis-1/2
-                md:w-1/3 md:flex-1 md:basis-1/3
-                lg:w-1/3 lg:flex-1 lg:basis-1/3
-              `}
-            >
-              <EmotionCard
-                emotion={emotion}
-                onClick={emotion.onClick}
-                size={cardSize}
-                className={`emotion-${emotion.name.toLowerCase().replace(/\s+/g, '-')} w-full`}
-              />
-            </div>
-          ))}
+        <div className="grid gap-6 sm:gap-8">
+          <div
+            className={`
+              grid gap-6 sm:gap-8
+              grid-cols-${columns.xs || 1}
+              sm:grid-cols-${columns.sm || 2}
+              md:grid-cols-${columns.md || 3}
+              lg:grid-cols-${columns.lg || 3}
+            `}
+          >
+            {emotions.map((emotion, index) => (
+              <div key={emotion.name} className="transform transition-all duration-300 hover:z-10">
+                <EmotionCard
+                  emotion={emotion}
+                  onClick={emotion.onClick}
+                  size={cardSize}
+                  className={`emotion-${emotion.name.toLowerCase().replace(/\s+/g, '-')} w-full h-full`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

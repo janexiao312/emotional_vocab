@@ -19,43 +19,64 @@ export default function Home() {
   }));
 
   return (
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="min-h-screen flex flex-col justify-center py-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-5xl font-semibold mb-4" style={{ color: '#2C3E50' }}>
-            How are you feeling?
-          </h1>
-          
-          <p className="text-xl max-w-2xl mx-auto leading-relaxed mb-6" style={{ color: '#7F8C8D' }}>
-            Let&apos;s start by choosing the highest level emotion that best matches how you&apos;re feeling right now. 
-            We&apos;ll then guide you to explore more specific feelings.
-          </p>
-          
-          <div className="max-w-lg mx-auto bg-blue-50 border border-blue-300 rounded-lg p-4">
-            <p className="font-medium" style={{ color: '#2E86AB' }}>
-              💡 Instruction: Pick the core emotion that feels most true to you right now
-            </p>
-          </div>
+    <div className="min-h-screen">
+      {/* Hero Section with Gradient Background */}
+      <div className="relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{ animationDelay: '4s' }}></div>
         </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6 py-16 sm:py-24">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="gradient-text">How are you</span>
+              <br />
+              <span className="text-slate-700">feeling today?</span>
+            </h1>
+            
+            <p className="text-xl sm:text-2xl max-w-4xl mx-auto leading-relaxed mb-10 text-slate-600">
+              Let&apos;s start by choosing the core emotion that resonates with you right now.
+              <br className="hidden sm:block" />
+              We&apos;ll guide you through exploring your feelings with care and understanding.
+            </p>
+            
+            <div className="max-w-2xl mx-auto">
+              <div className="instruction-card rounded-2xl p-6 sm:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center">
+                      <span className="text-2xl">💡</span>
+                    </div>
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-semibold text-lg text-slate-800 mb-2">Getting Started</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                      Choose the emotion that feels most authentic to your current experience. There&apos;s no right or wrong answer.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        {/* Core Emotions Grid */}
-        <EmotionGrid
-          emotions={coreEmotions}
-          cardSize="large"
-          columns={{
-            xs: 1,
-            sm: 2, 
-            md: 2,
-            lg: 3,
-          }}
-        />
-
-        {/* Footer */}
-        <div className="text-center mt-8">
-          <p className="italic" style={{ color: '#7F8C8D' }}>
-            No account required • Private and secure • Take your time
-          </p>
+          {/* Core Emotions Grid */}
+          <div className="max-w-6xl mx-auto">
+            <EmotionGrid
+              emotions={coreEmotions}
+              cardSize="large"
+              columns={{
+                xs: 1,
+                sm: 2, 
+                md: 2,
+                lg: 4,
+                xl: 4,
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
