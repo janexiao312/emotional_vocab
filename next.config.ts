@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   typescript: {
     ignoreBuildErrors: false
-  },
-  eslint: {
-    dirs: ['app', 'src']
   }
 };
 
